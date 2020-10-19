@@ -42,6 +42,11 @@ final class GooglePlace extends Address
     /**
      * @var string|null
      */
+    private $vicinity;
+
+    /**
+     * @var string|null
+     */
     private $icon;
 
     /**
@@ -92,7 +97,7 @@ final class GooglePlace extends Address
     /**
      * @see https://developers.google.com/places/place-id
      *
-     * @return null|string
+     * @return string|null
      */
     public function getId()
     {
@@ -100,7 +105,7 @@ final class GooglePlace extends Address
     }
 
     /**
-     * @param null|string $id
+     * @param string|null $id
      *
      * @return GooglePlace
      */
@@ -113,7 +118,7 @@ final class GooglePlace extends Address
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getName()
     {
@@ -121,7 +126,7 @@ final class GooglePlace extends Address
     }
 
     /**
-     * @param null|string $name
+     * @param string|null $name
      *
      * @return GooglePlace
      */
@@ -155,7 +160,7 @@ final class GooglePlace extends Address
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getFormattedAddress()
     {
@@ -171,6 +176,27 @@ final class GooglePlace extends Address
     {
         $new = clone $this;
         $new->formattedAddress = $formattedAddress;
+
+        return $new;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVicinity()
+    {
+        return $this->vicinity;
+    }
+
+    /**
+     * @param string|null $vicinity
+     *
+     * @return GooglePlace
+     */
+    public function withVicinity(string $vicinity = null)
+    {
+        $new = clone $this;
+        $new->vicinity = $vicinity;
 
         return $new;
     }
